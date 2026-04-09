@@ -22,8 +22,12 @@ namespace SchoolHub.Pages
         public string LoginPassword { get; set; }
         [BindProperty]
         public string LoginLogin { get; set; }
+        [BindProperty]
+        public string LoginRepeatPassword { get; set; }
+
         public bool IsAuthorized { get; set; }
         public string CurrentUserName { get; set; }
+        public string CurrentUserLogin { get; set; }
         public string Message { get; set; }
 
         public void OnGet()
@@ -65,7 +69,7 @@ namespace SchoolHub.Pages
             LoadUser();
             if (string.IsNullOrEmpty(LoginLogin) || string.IsNullOrEmpty(LoginPassword)) 
             {
-                Message = "¬ведите логин и пароль";
+                Message = "¬ведите логин и пароль.";
                 return Page();
             }
             var user = _context.Users.FirstOrDefault(u => u.Login == LoginLogin && u.Password == LoginPassword);
@@ -76,27 +80,37 @@ namespace SchoolHub.Pages
                 return Page();
             }
 
+            if (LoginPassword != LoginRepeatPassword || string.IsNullOrEmpty(LoginRepeatPassword)) 
+            {
+                Message = "ѕароль не сходитьс€.";
+                return Page();
+            }
             HttpContext.Session.SetInt32("UserId", user.Id);
             HttpContext.Session.SetString("UserName", user.Name);
+            HttpContext.Session.SetString("UserLogin", user.Login);
 
             return RedirectToPage();
         }
         public IActionResult OnPostLogout()
         {
             HttpContext.Session.Clear();
-
             return RedirectToPage();
         }
         private void LoadUser() 
         {
             var userId = HttpContext.Session.GetInt32("UserId");
             var userName = HttpContext.Session.GetString("UserName");
+            var userLogin = HttpContext.Session.GetString("UserLogin");
 
             IsAuthorized = userId != null;
 
             if (!string.IsNullOrEmpty(userName)) 
             {
                 CurrentUserName = userName;
+            }
+            if (!string.IsNullOrEmpty(userLogin)) 
+            {
+                CurrentUserLogin = userLogin;
             }
 
         }
