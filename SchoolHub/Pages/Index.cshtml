@@ -27,7 +27,6 @@
                                 Выйти
                             </button>
                         </form>
-                        
                     </div>
                 </div>
             }
@@ -71,19 +70,14 @@
                                         <label class="form-label">Пароль</label>
                                         
                                         <input asp-for="LoginPassword" type="password" class="form-control" id="PasswordVisibilityI" />
-                                        <button onclick="togglePassword()">
-                                            Переключить
+                                        <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('loginPassword', this)">
+                                            Показать
                                         </button>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label class="form-label">Повторите пароль</label>
-                                        <input asp-for="LoginRepeatPassword" type="password" class="form-control" />
                                     </div>
 
                                     <button type="submit" class="btn btn-primary w=100">
                                         Войти
                                     </button>
-
                                 </form>
                             </div>
 
@@ -97,15 +91,23 @@
                                         <label class="form-label">Логин</label>
                                         <input asp-for="RegisterLogin" class="form-control" />
                                     </div>
+                                   
+                                    <div class="mb-3">
+                                        <label class="form-label">Возраст</label>
+                                        <input asp-for="RegisterAge" class="form-control" />
+                                    </div>
+                                   
                                     <div class="mb-3">
                                         <label class="form-label">Пароль</label>
                                         <input asp-for="RegisterPassword" type="password" class="form-control" />
                                     </div>
-
+                                    <div class="mb-3">
+                                        <label class="form-label">Повторите пароль</label>
+                                        <input asp-for="RegistrRepeatPassword" type="password" class="form-control" />
+                                    </div>
                                     <button type="submit" class="btn btn-primary w=100">
                                         Зарегистрироваться
                                     </button>
-
                                 </form>
                             </div>
                         </div>
