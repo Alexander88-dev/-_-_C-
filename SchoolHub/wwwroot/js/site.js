@@ -3,16 +3,18 @@
 
 // Write your JavaScript code.
 //Boolean b = true;
-const button = document.getElementById("PasswordVisibilityB");
 
-function togglePassword() {
-    const input = document.getElementById("PasswordVisibilityI").type;
-    if (input.type == `password`)
+function togglePassword(inputId, button)
+{
+    const input = document.getElementById("PasswordVisibilityI");
+    if (input.type === "password")
     {
-        input.type = `text`;
+        input.type = "text";
+        button.textContent = "Скрыть"
     }
     else
     {
-        input.type = `password`;
+        input.type = "password";
+        button.textContent = "Показать"
     } 
 }

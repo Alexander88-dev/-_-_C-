@@ -1,11 +1,14 @@
-﻿namespace SchoolHub.Models
+﻿using System.Net.Cache;
+
+namespace SchoolHub.Models
 {
     public class User
     {
         public int Id { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
+        public string Login { get; set; } = string.Empty;
+        public string HashPassword { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
-
+        public int Age { get; set; }
+        
     }
 }
