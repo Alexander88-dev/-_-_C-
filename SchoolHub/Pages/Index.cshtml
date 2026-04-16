@@ -23,14 +23,16 @@
                         </p>
 
                         <div class="d-flex justify-content-center gap-2">
-                            <a asp-page="/Projects" class="btn btn-primary">Перейти к проектам</a>
-                        </div>
+                            <a asp-page="/Projects" class="btn btn-primary">Все проекты</a>
+                            <a asp-page="/MyProjects" class="btn btn-primary">Мои проекты</a>
+                        
 
                         <form method="post" asp-page-handler="Logout">
                             <button type="submit" class="btn btn-danger">
                                 Выйти
                             </button>
                         </form>
+                        </div>
                     </div>
                 </div>
             }
